@@ -1,0 +1,128 @@
+-- Unused Code - But I didn't want to delete it.
+
+from typing import final
+import numpy as np
+
+class QuantumState():
+
+def __init__(self, state, amt, roc, norm):
+  self.roc = roc  # 0 or 1 (r or c)
+  self.norm = norm
+
+  if self.roc == 1:
+    self.state = [[1]]
+    state.append([[0]] * amt)
+  else:
+    self.state = [1]
+    state.append([0] * amt)
+
+# 0 is a Row, 1 is a Column
+@staticmethod
+def rowOrCol(vector):
+  try:
+    if len(vector[0]) == 1:
+      return 1
+  except Exception:
+    pass
+  return 0
+
+def isComplexNumber(possibleComplex):
+  try:
+    return complex(possibleComplex).imag != 0
+  except ValueError:
+    return False
+
+@staticmethod
+def normalize(vector):
+  norm = 0
+  if QuantumState.rowOrCol(vector) == 0:
+    for i in range(len(vector)):
+      norm += vector[i]**2
+  else:
+    for i in range(len(vector[0])):
+      norm += vector[0][i]**2
+  return math.sqrt(norm)
+
+@staticmethod
+def transpose(matrix):
+  return [list(row) for row in zip(*matrix, strict=True)]
+
+@staticmethod
+def complexConjugate(matrix):
+  return [[complex(item).conjugate() for item in row] for row in matrix]
+
+@staticmethod
+def dagger(matrix):
+  matrix = QuantumState.complexConjugate(matrix)
+  return QuantumState.transpose(matrix)
+
+
+@staticmethod
+def Not(qbitAmt):
+  return q.generateGate("Not", qbitAmt)
+
+@staticmethod
+def Id(qbitAmt):
+  return q.generateGate("Id", qbitAmt)
+
+"Not": [[0, 1], [1, 0]],
+"Id": [[1, 0], [0, 1]]
+"Z": [[1, 0], [0, -1]],
+
+@staticmethod
+def dotProduct(vector1, vector2):
+  if len(vector1) != len(vector2):
+    raise ValueError("dotProduct: Vectors must be the same length.")
+
+  if QuantumState.rowOrCol(vector1) == 0 and QuantumState.rowOrCol(
+      vector2) == 1:
+    result = 0
+    for i in range(len(vector1)):
+      result += vector1[i] * vector2[i][0]
+
+    return result
+
+# 0 is a Row, 1 is a Column
+@staticmethod
+def rowOrCol(vector):
+  try:
+    if len(vector[0]) == 1:
+      return 1
+  except Exception:
+    pass
+  return 0
+
+  @staticmethod
+  def Z(qbitAmt):
+    return q.generateGate("Z", qbitAmt)
+
+    # stateArray = [0, 0, 0, 0]
+    # zero = [1, 0]
+    # one = [0, 1]
+    # a = [[1, 0], [1, 0]]
+    # stateArrayBit = one
+    # ansBit = one
+
+def generateGate(gate, qbitAmt):
+generatedGate = gateDict[gate]
+
+for _ in range(qbitAmt - 1):
+  generatedGate = tensorProduct(generatedGate, generatedGate)
+
+return generatedGate
+
+norm = 1 / math.sqrt(2)
+
+rowsMatrix2 = len(matrix2)
+
+import math
+
+if isBellState(vector4D):
+raise ValueError("tensorFactor: Vector is a Bell State.")
+
+def isBellState(vector4D):
+# stub
+return False
+
+def scalerMultiplier(matrix, scalar):
+return [[item * scalar for item in row] for row in matrix]
